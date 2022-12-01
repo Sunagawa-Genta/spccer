@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css">
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css">
+    <title>日本代表応援</title>
+
+</head>
+
+<body>
+    <div class="title">
+        <Marquee>～日本代表🎌応援～サッカーワールドカップ2022 12/2 VSスペイン</Marquee>
+    </div>
+    <div class="rogo">
+        <a href="http://www.jfa.jp/"><img src="img/1.png" alt="代表マーク"></a>
+    </div>
+    <div class="ball">
+        <a
+            href="https://www.google.com/search?q=%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97&rlz=1C1TKQJ_jaJP1025JP1025&sxsrf=ALiCzsYDDpbsPlZFE01eH96A1tSlOzctfg%3A1669698837368&ei=FZWFY-yMFsPi-Abjyq74DA&ved=0ahUKEwis69Tw0NL7AhVDMd4KHWOlC88Q4dUDCA8&uact=5&oq=%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzITCAAQBBCABBCxAxCDARCxAxCDATIICAAQsQMQgwEyCAgAELEDEIMBMhMIABAEEIAEELEDEIMBELEDEIMBMggIABCxAxCDATIICAAQsQMQgwEyBwgAEAQQgAQyCAgAELEDEIMBMggIABCxAxCDATIICAAQsQMQgwE6CggAEEcQ1gQQsANKBAhBGABKBAhGGABQ9xZY9xZgmRpoA3AAeACAAWOIAWOSAQExmAEAoAEByAEKwAEB&sclient=gws-wiz-serp#sie=lg;/m/0fp_8fm;2;/m/030q7;mt;fp;1;;;"><img
+                src="img/ball.png" alt="日程" width="200" height="200" class="hover6"></a>
+        <a href="https://www.jfa.jp/samuraiblue/squad2022/"><img src="img/ball.png" alt="メンバー" width="200" height="200"
+                class="hover6"></a>
+        <a
+            href="https://www.google.com/search?q=%E6%97%A5%E6%9C%AC%E4%BB%A3%E8%A1%A8+%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97e&rlz=1C1TKQJ_jaJP1025JP1025&sxsrf=ALiCzsYu6D-HGuOf_SWB_0y_HXG09qNfgA%3A1669699134297&ei=PpaFY47YEZGL2roPs5usoAk&oq=%E6%97%A5%E6%9C%AC%E4%BB%A3%E8%A1%A8+guru-pu&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQARgBMgwIABAEEIAEEEYQ_QEyBwgAEAQQgAQyBwgAEAQQgAQyBwgAEAQQgAQyBwgAEAQQgAQ6CggAEEcQ1gQQsAM6BAgjECc6CAgAELEDEIMBOhkIABAEEIAEELEDEIMBELEDEIMBELEDEIMBOgYIABAEEANKBAhBGABKBAhGGABQnwdY4D9gkFJoAXAAeACAAXqIAdMGkgEDMS43mAEAoAEByAEKwAEB&sclient=gws-wiz-serp#sie=t;/m/03xh50;2;/m/030q7;st;fp;1;;;"><img
+                src="img/ball.png" alt="順位表" width="200" height="200" class="hover6"></a>
+        <a href=""><img src="img/ball.png" alt="公式球" width="200" height="200" class="hover6"></a>
+    </div>
+    <form>
+        <div class="field">
+            <fieldset style="width: 100px;">
+                <legend>応援入力画面</legend>
+                <div>名前: <input type="text" id="name"></div>
+                <div>応援文: <input type="text" class="text"></div>
+                <button type="button" id="send">応援</button>
+            </fieldset>
+        </div>
+    </form>
+    <div class="message">
+        <h2>~みんなの応援~</h2>
+    </div>
+    <!-- データ出力場所 -->
+    <div class="ouen-text">
+        <ul id="output"></ul>
+    </div>
+    <!-- ボタン作成 -->
+    <div id="page-top">
+        <!-- 好きなアイコンを選択 -->
+        <i class="fa-sharp fa-solid fa-futbol"></i>
+    </div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+
+    <audio controls autoplay src="music/background.mp3"></audio>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        // 日時をいい感じの形式にする関数
+        function convertTimestampToDatetime(timestamp) {
+            const _d = timestamp ? new Date(timestamp * 1000) : new Date();
+            const Y = _d.getFullYear();
+            const m = (_d.getMonth() + 1).toString().padStart(2, '0');
+            const d = _d.getDate().toString().padStart(2, '0');
+            const H = _d.getHours().toString().padStart(2, '0');
+            const i = _d.getMinutes().toString().padStart(2, '0');
+            const s = _d.getSeconds().toString().padStart(2, '0');
+            return `${Y}/${m}/${d} ${H}:${i}:${s}`;
+        }
+    </script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+        // 🔽 追加 / `9.2.0`の部分を↑のFirestoreから貼り付けたコードのバージョンに合わせる
+        import {
+            getFirestore,
+            collection,
+            addDoc,
+            serverTimestamp,
+            query,
+            orderBy,
+            onSnapshot,
+        } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: ,
+            authDomain: "chat-app-test-01-b7bad.firebaseapp.com",
+            projectId: "chat-app-test-01-b7bad",
+            storageBucket: "chat-app-test-01-b7bad.appspot.com",
+            messagingSenderId: "495581034538",
+            appId: "1:495581034538:web:7368bc52967bbca2c56b53"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        // 🔽 追加
+        const db = getFirestore(app);
+
+        $("#send").on("click", function () {
+            const postData = {
+                name: $("#name").val(),
+                text: $("#text").val(),
+                time: serverTimestamp(),
+            };
+            addDoc(collection(db, "chat"), postData);
+            $("#text").val("");
+        })
+        // データ取得処理
+        const q = query(collection(db, "chat"), orderBy("time", "desc"));
+
+
+        onSnapshot(q, (querySnapshot) => {
+
+            const documents = [];
+            querySnapshot.docs.forEach(function (doc) {
+                const document = {
+                    id: doc.id,
+                    data: doc.data(),
+                };
+                documents.push(document);
+            });
+
+            console.log(documents);
+            const htmlElements = [];
+            documents.forEach(function (document) {
+                htmlElements.push(`
+    <li id="${document.id}">
+      <p>${document.data.name} at  ${convertTimestampToDatetime(document.data.time.seconds)}</p>
+      <p>${document.data.text}</p>
+    </li>
+  `);
+            });
+
+            $("#output").html(htmlElements);
+
+        });
+    </script>
+    <script>
+        $(function () {
+            // 変数宣言と代入
+            let pageTop = $('#page-top');
+            // ボタン非表示
+            pageTop.hide();
+            // 80pxスクロールしたらボタン表示
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 60) {
+                    // 0.3秒でフェードイン
+                    pageTop.fadeIn(300);
+                } else {
+                    // 0.3秒でフェードアウト
+                    pageTop.fadeOut(300);
+                }
+            });
+            // 0.5秒でページトップへ戻る
+            pageTop.click(function () {
+                $('body, html').animate({ scrollTop: 0 }, 300);
+                return false;
+            })
+        })
+    </script>
+
+
+</body>
+
+</html>
